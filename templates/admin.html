@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Admin Dashboard</h3>
+
+<h5 class="mt-4">All Users:</h5>
+<ul class="list-group mb-4">
+    {% for user in users %}
+        <li class="list-group-item">
+            {{ user.username }} {% if user.is_admin %}<span class="badge bg-warning text-dark">Admin</span>{% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<h5>All Files:</h5>
+<ul class="list-group">
+    {% for file in files %}
+        <li class="list-group-item">
+            {{ file.filename }} <small class="text-muted">uploaded by {{ file.uploaded_by }}</small>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Welcome, {{ current_user.username }}</h3>
+{% if files %}
+    <div class="mt-4">
+        <h5>Your Files:</h5>
+        <ul class="list-group">
+            {% for file in files %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ file.filename }}
+                    <a href="{{ url_for('download', filename=file.filename) }}" class="btn btn-sm btn-outline-primary">Download</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <p class="text-muted mt-4">You haven’t uploaded any files yet.</p>
+{% endif %}
+{% endblock %}
